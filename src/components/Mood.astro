@@ -1,0 +1,89 @@
+---
+interface Props {
+  description?: string
+  stills: string[]
+}
+
+const { description = '', stills = [] } = Astro.props
+---
+
+<section class="mood-section" style="background: #0A0A0A;">
+  <div class="h-[15vh]"></div>
+
+  {stills.map((src, i) => (
+    <div
+      class={`mood-still relative overflow-hidden ${i === 0 ? '' : 'mt-[-5vh]'}`}
+      data-mood-index={i}
+    >
+      <div class="mood-img-wrapper opacity-0" data-mood-reveal>
+        <img
+          src={src}
+          alt=""
+          class="w-full object-cover"
+          style={`height: ${i === 0 ? '80vh' : '70vh'}; ${i % 2 === 0 ? '' : 'object-position: center 30%;'}`}
+        />
+      </div>
+
+      {i === 0 && description && (
+        <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16 lg:p-24" style="background: linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 100%);">
+          <p class="mood-desc font-body text-sm md:text-base font-light tracking-wide text-pitch-white/70 max-w-xl opacity-0" data-mood-text>
+            {description}
+          </p>
+        </div>
+      )}
+    </div>
+  ))}
+
+  <div class="h-[15vh]"></div>
+</section>
+
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  gsap.registerPlugin(ScrollTrigger)
+
+  document.querySelectorAll('[data-mood-reveal]').forEach((el, i) => {
+    gsap.fromTo(el,
+      { opacity: 0, y: i === 0 ? 0 : 60 },
+      {
+        opacity: 1, y: 0,
+        duration: 1.5,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        }
+      }
+    )
+
+    // Parallax on scroll
+    gsap.to(el.querySelector('img'), {
+      y: -40,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      }
+    })
+  })
+
+  document.querySelectorAll('[data-mood-text]').forEach(el => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1, y: 0,
+        duration: 1,
+        delay: 0.5,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        }
+      }
+    )
+  })
+</script>

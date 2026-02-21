@@ -1,0 +1,82 @@
+---
+interface Props {
+  awards?: string[]
+  collaborators?: { name: string; role: string }[]
+  press?: { source: string; quote: string }[]
+}
+
+const { awards = [], collaborators = [], press = [] } = Astro.props
+---
+
+<section class="credibility-section" style="background: #0A0A0A;">
+  <div class="h-[15vh]"></div>
+
+  <div class="max-w-4xl mx-auto px-6 md:px-16">
+
+    {awards.length > 0 && (
+      <div class="cred-block opacity-0 mb-16" data-cred-el>
+        <ul class="space-y-3">
+          {awards.map(award => (
+            <li class="font-body text-sm md:text-base font-light tracking-wide text-pitch-white/60">
+              {award}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {collaborators.length > 0 && (
+      <div class="cred-block opacity-0 mb-16" data-cred-el>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+          {collaborators.map(collab => (
+            <div>
+              <p class="font-body text-base font-light text-pitch-white">{collab.name}</p>
+              <p class="font-body text-xs tracking-wide text-pitch-muted mt-1">{collab.role}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {press.length > 0 && (
+      <div class="cred-block opacity-0" data-cred-el>
+        {press.map(item => (
+          <blockquote class="mb-8 last:mb-0">
+            <p class="font-display text-xl md:text-2xl font-light italic text-pitch-white/80 mb-2">
+              "{item.quote}"
+            </p>
+            <cite class="font-body text-xs tracking-wide text-pitch-muted not-italic">
+              {item.source}
+            </cite>
+          </blockquote>
+        ))}
+      </div>
+    )}
+
+  </div>
+
+  <div class="h-[10vh]"></div>
+</section>
+
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  gsap.registerPlugin(ScrollTrigger)
+
+  document.querySelectorAll('[data-cred-el]').forEach((el, i) => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1, y: 0,
+        duration: 1,
+        delay: i * 0.2,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el.closest('.credibility-section'),
+          start: 'top 65%',
+          toggleActions: 'play none none none',
+        }
+      }
+    )
+  })
+</script>

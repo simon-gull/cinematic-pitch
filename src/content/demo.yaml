@@ -1,0 +1,116 @@
+slug: demo
+title: "Nothing is Still"
+subtitle: "A series about meaning, loneliness, and modern existence"
+format: "Limited Series · 6 × 45 min"
+genre: "Drama"
+status: "In Development"
+year: 2026
+
+entry:
+  pulse: true
+
+audio:
+  file: "/projects/demo/audio/ambient.mp3"
+  autoplay: true
+  loop: true
+
+hook:
+  type: image
+  media: "/projects/demo/stills/hero.jpg"
+  tagline: "What happens when stillness becomes unbearable?"
+  overlay_lines:
+    - "We fill every silence."
+    - "We scroll past every pause."
+    - "What if the emptiness is the answer?"
+
+story_immersion:
+  beats:
+    - text: "A man sits at a kitchen table. The coffee has gone cold. Outside, the city hums. He doesn't hear it."
+      position: left
+      image: "/projects/demo/stills/01.jpg"
+      image_behavior: fade-in
+
+    - text: "Three months since he last left the apartment. Three months since anyone asked why."
+      position: right
+      image: "/projects/demo/stills/02.jpg"
+      image_behavior: fade-out
+
+    - text: "Six cities. Six people. The same silence."
+      position: center
+
+    - text: "A woman in Tokyo writes a letter she will never send. A boy in Dublin counts the cracks in the ceiling. A surgeon in Stockholm stares at his hands."
+      position: left
+      image: "/projects/demo/stills/03.jpg"
+      image_behavior: fade-in
+
+  logline: "Six strangers in six cities discover that the thing they've been running from is the only thing that can save them."
+
+mood:
+  description: "Aftersun meets Fleabag. Intimate, observational, tragicomic. Long takes. Natural light. Silence as dialogue."
+  palette: dark
+  stills:
+    - "/projects/demo/stills/04.jpg"
+    - "/projects/demo/stills/05.jpg"
+    - "/projects/demo/stills/06.jpg"
+
+world:
+  text: "Set across Stockholm, Dublin, Amsterdam, Palma, and Tokyo. Each episode follows one person through 48 hours of reckoning. The cities breathe. The characters don't."
+  visual: "/projects/demo/stills/07.jpg"
+
+characters:
+  - name: "Elias"
+    description: "A retired surgeon who hasn't left his apartment in three months. His hands still remember every incision."
+    image: "/projects/demo/stills/08.jpg"
+  - name: "Noor"
+    description: "A tech founder who measures everything except what matters. Her inbox has 12,000 unread messages."
+    image: "/projects/demo/stills/09.jpg"
+  - name: "Cian"
+    description: "A teenager in Dublin who speaks to no one. He knows every crack in his ceiling by heart."
+    image: "/projects/demo/stills/10.jpg"
+
+vision:
+  portrait: "/projects/demo/portraits/director.jpg"
+  name: "Simon Gullström"
+  text: "This is a story about the weight of modern silence. We live in an age where every second is filled, yet we've never been more empty. I want to make a series that sits in that silence and refuses to look away."
+  credentials:
+    - "Swedish Grammy Nomination · Best Music Film"
+    - "SVT Premiere"
+    - "Directors' Library"
+    - "Evolution Mallorca IFF · Official Selection"
+
+themes:
+  headline: "Why Now"
+  text: "Loneliness is the epidemic no one talks about on camera. This series doesn't diagnose. It inhabits."
+  points:
+    - "Mental health without clinical distance"
+    - "Masculinity, identity, and the fear of asking for help"
+    - "What happens when the noise stops"
+    - "The courage it takes to be still"
+
+credibility:
+  awards:
+    - "Swedish Grammy Nomination · Best Music Film"
+    - "Evolution Mallorca IFF · Official Selection"
+    - "SVT Premiere · National Broadcast"
+    - "Directors' Library · Selected Director"
+
+cta:
+  headline: "Let's build this together."
+  text: "Looking for the right producing partner to bring this story to screen."
+  contact_email: "simon@digdeeperfilms.com"
+  links:
+    - label: "Director's Reel"
+      url: "https://vimeo.com/1163933702"
+    - label: "Dig Deeper Films"
+      url: "https://digdeeperfilms.com"
+
+sections:
+  - hook
+  - story_immersion
+  - mood
+  - world
+  - characters
+  - vision
+  - themes
+  - credibility
+  - cta

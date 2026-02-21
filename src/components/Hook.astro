@@ -1,0 +1,162 @@
+---
+interface Props {
+  type: 'video' | 'image' | 'text-only'
+  media?: string
+  tagline?: string
+  overlayLines?: string[]
+}
+
+const { type = 'image', media = '', tagline = '', overlayLines = [] } = Astro.props
+---
+
+<section class="hook-section relative" style="min-height: 200vh;">
+  <!-- Sticky viewport container -->
+  <div class="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center" style="background: #0A0A0A;">
+    {type === 'video' && media && (
+      <video
+        class="hook-media absolute inset-0 w-full h-full object-cover opacity-0"
+        autoplay
+        muted
+        loop
+        playsinline
+        data-scroll-reveal
+      >
+        <source src={media} type="video/mp4" />
+      </video>
+    )}
+
+    {type === 'image' && media && (
+      <div class="hook-media absolute inset-0 opacity-0" data-scroll-reveal>
+        <img
+          src={media}
+          alt=""
+          class="w-full h-full object-cover"
+          style="transform: scale(1.05); transition: transform 12s ease-out;"
+          data-ken-burns
+        />
+      </div>
+    )}
+
+    {type === 'text-only' && (
+      <div class="hook-media opacity-0" data-scroll-reveal />
+    )}
+
+    <!-- Overlay content -->
+    <div class="absolute inset-0 flex flex-col justify-end p-8 md:p-16 lg:p-24 z-10"
+         style="background: linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 50%);">
+      {tagline && (
+        <p class="hook-tagline font-display text-2xl md:text-4xl lg:text-5xl font-light leading-tight max-w-3xl opacity-0"
+           data-scroll-text>
+          {tagline}
+        </p>
+      )}
+    </div>
+
+    <!-- Overlay lines (scroll-triggered) -->
+    {overlayLines.length > 0 && (
+      <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+        <div class="text-center px-8">
+          {overlayLines.map((line, i) => (
+            <p
+              class="hook-overlay-line font-display text-xl md:text-3xl lg:text-4xl font-light opacity-0 mb-4"
+              data-overlay-index={i}
+              data-overlay-total={overlayLines.length}
+            >
+              {line}
+            </p>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  gsap.registerPlugin(ScrollTrigger)
+
+  // Reveal hero media
+  document.querySelectorAll('[data-scroll-reveal]').forEach(el => {
+    const parent = el.closest('.hook-section')
+    if (!parent) return
+
+    gsap.to(el, {
+      opacity: 1,
+      duration: 2,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: parent,
+        start: 'top 90%',
+        toggleActions: 'play none none none',
+      }
+    })
+  })
+
+  // Ken Burns
+  document.querySelectorAll('[data-ken-burns]').forEach(img => {
+    const parent = img.closest('.hook-section')
+    if (!parent) return
+
+    ScrollTrigger.create({
+      trigger: parent,
+      start: 'top top',
+      end: 'bottom top',
+      onEnter: () => {
+        ;(img as HTMLElement).style.transform = 'scale(1.0)'
+      }
+    })
+  })
+
+  // Tagline
+  document.querySelectorAll('[data-scroll-text]').forEach(el => {
+    const parent = el.closest('.hook-section')
+    if (!parent) return
+
+    gsap.to(el, {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      delay: 0.8,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: parent,
+        start: 'top 60%',
+        toggleActions: 'play none none none',
+      }
+    })
+  })
+
+  // Overlay lines
+  document.querySelectorAll('.hook-overlay-line').forEach(el => {
+    const parent = el.closest('.hook-section')
+    if (!parent) return
+    const index = parseInt(el.getAttribute('data-overlay-index') || '0')
+    const total = parseInt(el.getAttribute('data-overlay-total') || '1')
+    const startPct = 30 + (index / total) * 40
+
+    gsap.fromTo(el,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1, y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: parent,
+          start: `${startPct}% center`,
+          toggleActions: 'play none none none',
+        }
+      }
+    )
+
+    // Fade out
+    gsap.to(el, {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: parent,
+        start: `${startPct + 15}% center`,
+        toggleActions: 'play none none none',
+      }
+    })
+  })
+</script>

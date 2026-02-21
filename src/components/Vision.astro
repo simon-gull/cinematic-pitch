@@ -1,0 +1,90 @@
+---
+interface Props {
+  portrait?: string
+  name: string
+  text: string
+  credentials?: string[]
+}
+
+const { portrait = '', name, text, credentials = [] } = Astro.props
+---
+
+<section class="vision-section" style="background: #0A0A0A;">
+  <div class="h-[15vh]"></div>
+
+  <div class="max-w-5xl mx-auto px-6 md:px-16">
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-16 items-start">
+      {/* Portrait */}
+      {portrait && (
+        <div class="vision-portrait opacity-0" data-vision-portrait>
+          <div class="overflow-hidden" style="aspect-ratio: 3/4; max-width: 320px;">
+            <img src={portrait} alt={name} class="w-full h-full object-cover" />
+          </div>
+          <p class="font-display text-xl md:text-2xl font-light text-pitch-white mt-4">
+            {name}
+          </p>
+        </div>
+      )}
+
+      {/* Statement */}
+      <div class="vision-statement opacity-0" data-vision-text>
+        <p class="font-display text-2xl md:text-3xl lg:text-[36px] font-light leading-relaxed text-pitch-white italic">
+          {text}
+        </p>
+
+        {credentials.length > 0 && (
+          <div class="mt-12 pt-8 border-t border-pitch-dim">
+            <ul class="space-y-2">
+              {credentials.map(cred => (
+                <li class="font-body text-xs md:text-sm tracking-wide text-pitch-muted">
+                  {cred}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <div class="h-[15vh]"></div>
+</section>
+
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  gsap.registerPlugin(ScrollTrigger)
+
+  document.querySelectorAll('[data-vision-portrait]').forEach(el => {
+    gsap.fromTo(el,
+      { opacity: 0, x: -30 },
+      {
+        opacity: 1, x: 0,
+        duration: 1.2,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el.closest('.vision-section'),
+          start: 'top 65%',
+          toggleActions: 'play none none none',
+        }
+      }
+    )
+  })
+
+  document.querySelectorAll('[data-vision-text]').forEach(el => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1, y: 0,
+        duration: 1.2,
+        delay: 0.3,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el.closest('.vision-section'),
+          start: 'top 65%',
+          toggleActions: 'play none none none',
+        }
+      }
+    )
+  })
+</script>

@@ -1,0 +1,151 @@
+---
+import fs from 'node:fs'
+import path from 'node:path'
+import yaml from 'js-yaml'
+import Layout from '../layouts/Layout.astro'
+import EntryGate from '../components/EntryGate.astro'
+import Hook from '../components/Hook.astro'
+import StoryImmersion from '../components/StoryImmersion.astro'
+import Mood from '../components/Mood.astro'
+import World from '../components/World.astro'
+import Characters from '../components/Characters.astro'
+import Vision from '../components/Vision.astro'
+import Themes from '../components/Themes.astro'
+import Credibility from '../components/Credibility.astro'
+import CTA from '../components/CTA.astro'
+
+export function getStaticPaths() {
+  const contentDir = path.join(process.cwd(), 'src', 'content')
+  const files = fs.readdirSync(contentDir).filter(f => f.endsWith('.yaml') || f.endsWith('.yml'))
+
+  return files.map(file => {
+    const raw = fs.readFileSync(path.join(contentDir, file), 'utf-8')
+    const data = yaml.load(raw) as any
+    return {
+      params: { slug: data.slug || file.replace(/\.(yaml|yml)$/, '') },
+      props: { project: data }
+    }
+  })
+}
+
+const { project } = Astro.props
+const sections = project.sections || ['hook', 'story_immersion', 'mood', 'world', 'characters', 'vision', 'themes', 'credibility', 'cta']
+const audioSrc = project.audio?.file || ''
+
+const sectionMap: Record<string, string> = {
+  hook: 'Hook',
+  story_immersion: 'StoryImmersion',
+  mood: 'Mood',
+  world: 'World',
+  characters: 'Characters',
+  vision: 'Vision',
+  themes: 'Themes',
+  credibility: 'Credibility',
+  cta: 'CTA',
+}
+---
+
+<Layout
+  title={`${project.title} — ${project.format || ''}`}
+  description={project.subtitle || ''}
+>
+  <EntryGate
+    title={project.title}
+    format={project.format}
+    audioSrc={audioSrc}
+  />
+
+  <main>
+    {sections.map((sectionKey: string) => {
+      if (sectionKey === 'hook' && project.hook) {
+        return (
+          <Hook
+            type={project.hook.type || 'image'}
+            media={project.hook.media}
+            tagline={project.hook.tagline}
+            overlayLines={project.hook.overlay_lines}
+          />
+        )
+      }
+
+      if (sectionKey === 'story_immersion' && project.story_immersion) {
+        return (
+          <StoryImmersion
+            beats={project.story_immersion.beats}
+            logline={project.story_immersion.logline}
+          />
+        )
+      }
+
+      if (sectionKey === 'mood' && project.mood) {
+        return (
+          <Mood
+            description={project.mood.description}
+            stills={project.mood.stills}
+          />
+        )
+      }
+
+      if (sectionKey === 'world' && project.world) {
+        return (
+          <World
+            text={project.world.text}
+            visual={project.world.visual}
+          />
+        )
+      }
+
+      if (sectionKey === 'characters' && project.characters) {
+        return (
+          <Characters
+            characters={project.characters}
+          />
+        )
+      }
+
+      if (sectionKey === 'vision' && project.vision) {
+        return (
+          <Vision
+            portrait={project.vision.portrait}
+            name={project.vision.name}
+            text={project.vision.text}
+            credentials={project.vision.credentials}
+          />
+        )
+      }
+
+      if (sectionKey === 'themes' && project.themes) {
+        return (
+          <Themes
+            headline={project.themes.headline}
+            text={project.themes.text}
+            points={project.themes.points}
+          />
+        )
+      }
+
+      if (sectionKey === 'credibility' && project.credibility) {
+        return (
+          <Credibility
+            awards={project.credibility.awards}
+            collaborators={project.credibility.collaborators}
+            press={project.credibility.press}
+          />
+        )
+      }
+
+      if (sectionKey === 'cta' && project.cta) {
+        return (
+          <CTA
+            headline={project.cta.headline}
+            text={project.cta.text}
+            contactEmail={project.cta.contact_email}
+            links={project.cta.links}
+          />
+        )
+      }
+
+      return null
+    })}
+  </main>
+</Layout>

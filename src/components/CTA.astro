@@ -1,0 +1,82 @@
+---
+interface Link {
+  label: string
+  url: string
+}
+
+interface Props {
+  headline?: string
+  text?: string
+  contactEmail?: string
+  links?: Link[]
+}
+
+const { headline = "Let's build this together.", text = '', contactEmail = '', links = [] } = Astro.props
+---
+
+<section class="cta-section relative" style="background: #0A0A0A;">
+  <div class="min-h-screen flex flex-col items-center justify-center px-6 md:px-16 text-center">
+    <div class="max-w-2xl">
+      <h2 class="cta-headline font-display text-3xl md:text-5xl lg:text-6xl font-light text-pitch-white mb-8 opacity-0" data-cta-el>
+        {headline}
+      </h2>
+
+      {text && (
+        <p class="cta-text font-body text-base md:text-lg font-light text-pitch-white/60 mb-12 opacity-0" data-cta-el>
+          {text}
+        </p>
+      )}
+
+      {contactEmail && (
+        <a
+          href={`mailto:${contactEmail}`}
+          class="cta-email inline-block font-body text-sm md:text-base tracking-[0.15em] text-pitch-white/80 hover:text-pitch-white transition-colors duration-300 border-b border-pitch-dim hover:border-pitch-white/40 pb-1 mb-12 opacity-0"
+          data-cta-el
+        >
+          {contactEmail}
+        </a>
+      )}
+
+      {links.length > 0 && (
+        <div class="cta-links flex flex-wrap justify-center gap-6 md:gap-8 opacity-0" data-cta-el>
+          {links.map(link => (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-body text-xs md:text-sm tracking-[0.2em] uppercase text-pitch-muted hover:text-pitch-white transition-colors duration-300"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+
+  {/* Final still image — the lingering frame */}
+  <div class="h-[30vh]"></div>
+</section>
+
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  gsap.registerPlugin(ScrollTrigger)
+
+  document.querySelectorAll('[data-cta-el]').forEach((el, i) => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1, y: 0,
+        duration: 1,
+        delay: i * 0.2,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el.closest('.cta-section'),
+          start: 'top 60%',
+          toggleActions: 'play none none none',
+        }
+      }
+    )
+  })
+</script>

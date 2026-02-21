@@ -1,0 +1,103 @@
+---
+interface Props {
+  title: string
+  format?: string
+  audioSrc?: string
+}
+
+const { title, format = '', audioSrc = '' } = Astro.props
+---
+
+<section
+  id="entry-gate"
+  class="fixed inset-0 z-50 flex flex-col items-center justify-center cursor-pointer select-none"
+  style="background: #0A0A0A;"
+  data-audio-src={audioSrc}
+>
+  <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-light tracking-wide text-pitch-white pulse-title text-center px-8">
+    {title}
+  </h1>
+  {format && (
+    <p class="font-body text-xs md:text-sm tracking-[0.3em] uppercase text-pitch-muted mt-6 opacity-40">
+      {format}
+    </p>
+  )}
+</section>
+
+<audio id="ambient-audio" loop preload="auto">
+  {audioSrc && <source src={audioSrc} type="audio/mpeg" />}
+</audio>
+
+<script>
+  const gate = document.getElementById('entry-gate')
+  const audio = document.getElementById('ambient-audio') as HTMLAudioElement
+  const muteBtn = document.getElementById('mute-btn')
+  const iconOn = document.getElementById('mute-icon-on')
+  const iconOff = document.getElementById('mute-icon-off')
+
+  if (gate) {
+    gate.addEventListener('click', () => {
+      // Fade out gate
+      gate.style.transition = 'opacity 1s cubic-bezier(0.25, 0.1, 0.25, 1)'
+      const title = gate.querySelector('h1')
+      if (title) {
+        title.style.transition = 'transform 0.8s ease, opacity 0.8s ease'
+        title.style.transform = 'scale(1.05)'
+        title.style.opacity = '0'
+        title.classList.remove('pulse-title')
+      }
+
+      setTimeout(() => {
+        gate.style.opacity = '0'
+      }, 300)
+
+      setTimeout(() => {
+        gate.style.display = 'none'
+        document.body.classList.remove('scroll-locked')
+
+        // Start audio with fade in
+        if (audio && audio.querySelector('source')?.getAttribute('src')) {
+          audio.volume = 0
+          audio.play().then(() => {
+            let vol = 0
+            const fadeIn = setInterval(() => {
+              vol += 0.02
+              if (vol >= 0.6) {
+                vol = 0.6
+                clearInterval(fadeIn)
+              }
+              audio.volume = vol
+            }, 60) // ~3s fade in
+          }).catch(() => {})
+
+          // Show mute button
+          if (muteBtn) muteBtn.classList.add('visible')
+        }
+      }, 1000)
+    })
+  }
+
+  // Mute toggle
+  let muted = false
+  if (muteBtn && audio) {
+    muteBtn.addEventListener('click', (e) => {
+      e.stopPropagation()
+      muted = !muted
+      audio.muted = muted
+      if (iconOn && iconOff) {
+        iconOn.style.display = muted ? 'none' : 'block'
+        iconOff.style.display = muted ? 'block' : 'none'
+      }
+    })
+  }
+
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const bar = document.getElementById('progress-bar')
+    if (!bar) return
+    const scrollTop = window.scrollY
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
+    bar.style.width = progress + '%'
+  })
+</script>
