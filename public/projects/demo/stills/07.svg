@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1500" viewBox="0 0 2400 1500">
+  <defs>
+    <linearGradient id="g305" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:hsl(305,10%,22%)" />
+      <stop offset="100%" style="stop-color:hsl(325,15%,17%)" />
+    </linearGradient>
+  </defs>
+  <rect width="2400" height="1500" fill="url(#g305)"/>
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="rgba(255,255,255,0.06)" font-family="Helvetica, Arial, sans-serif" font-size="18" letter-spacing="8">STILL 07</text>
+</svg>

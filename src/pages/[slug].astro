@@ -13,6 +13,7 @@ import Vision from '../components/Vision.astro'
 import Themes from '../components/Themes.astro'
 import Credibility from '../components/Credibility.astro'
 import CTA from '../components/CTA.astro'
+import SectionNav from '../components/SectionNav.astro'
 
 export function getStaticPaths() {
   const contentDir = path.join(process.cwd(), 'src', 'content')
@@ -32,17 +33,22 @@ const { project } = Astro.props
 const sections = project.sections || ['hook', 'story_immersion', 'mood', 'world', 'characters', 'vision', 'themes', 'credibility', 'cta']
 const audioSrc = project.audio?.file || ''
 
-const sectionMap: Record<string, string> = {
-  hook: 'Hook',
-  story_immersion: 'StoryImmersion',
+const sectionLabels: Record<string, string> = {
+  hook: 'Opening',
+  story_immersion: 'Story',
   mood: 'Mood',
   world: 'World',
   characters: 'Characters',
-  vision: 'Vision',
+  vision: 'Director',
   themes: 'Themes',
-  credibility: 'Credibility',
-  cta: 'CTA',
+  credibility: 'Credentials',
+  cta: 'Contact',
 }
+
+// Build nav items from active sections
+const navItems = sections
+  .filter((key: string) => project[key] || (key === 'characters' && project.characters))
+  .map((key: string) => ({ id: key, label: sectionLabels[key] || key }))
 ---
 
 <Layout
@@ -55,93 +61,113 @@ const sectionMap: Record<string, string> = {
     audioSrc={audioSrc}
   />
 
+  <SectionNav items={navItems} />
+
   <main>
     {sections.map((sectionKey: string) => {
       if (sectionKey === 'hook' && project.hook) {
         return (
-          <Hook
-            type={project.hook.type || 'image'}
-            media={project.hook.media}
-            tagline={project.hook.tagline}
-            overlayLines={project.hook.overlay_lines}
-          />
+          <div id="section-hook" data-section="hook">
+            <Hook
+              type={project.hook.type || 'image'}
+              media={project.hook.media}
+              tagline={project.hook.tagline}
+              overlayLines={project.hook.overlay_lines}
+            />
+          </div>
         )
       }
 
       if (sectionKey === 'story_immersion' && project.story_immersion) {
         return (
-          <StoryImmersion
-            beats={project.story_immersion.beats}
-            logline={project.story_immersion.logline}
-          />
+          <div id="section-story_immersion" data-section="story_immersion">
+            <StoryImmersion
+              beats={project.story_immersion.beats}
+              logline={project.story_immersion.logline}
+            />
+          </div>
         )
       }
 
       if (sectionKey === 'mood' && project.mood) {
         return (
-          <Mood
-            description={project.mood.description}
-            stills={project.mood.stills}
-          />
+          <div id="section-mood" data-section="mood">
+            <Mood
+              description={project.mood.description}
+              stills={project.mood.stills}
+            />
+          </div>
         )
       }
 
       if (sectionKey === 'world' && project.world) {
         return (
-          <World
-            text={project.world.text}
-            visual={project.world.visual}
-          />
+          <div id="section-world" data-section="world">
+            <World
+              text={project.world.text}
+              visual={project.world.visual}
+            />
+          </div>
         )
       }
 
       if (sectionKey === 'characters' && project.characters) {
         return (
-          <Characters
-            characters={project.characters}
-          />
+          <div id="section-characters" data-section="characters">
+            <Characters
+              characters={project.characters}
+            />
+          </div>
         )
       }
 
       if (sectionKey === 'vision' && project.vision) {
         return (
-          <Vision
-            portrait={project.vision.portrait}
-            name={project.vision.name}
-            text={project.vision.text}
-            credentials={project.vision.credentials}
-          />
+          <div id="section-vision" data-section="vision">
+            <Vision
+              portrait={project.vision.portrait}
+              name={project.vision.name}
+              text={project.vision.text}
+              credentials={project.vision.credentials}
+            />
+          </div>
         )
       }
 
       if (sectionKey === 'themes' && project.themes) {
         return (
-          <Themes
-            headline={project.themes.headline}
-            text={project.themes.text}
-            points={project.themes.points}
-          />
+          <div id="section-themes" data-section="themes">
+            <Themes
+              headline={project.themes.headline}
+              text={project.themes.text}
+              points={project.themes.points}
+            />
+          </div>
         )
       }
 
       if (sectionKey === 'credibility' && project.credibility) {
         return (
-          <Credibility
-            awards={project.credibility.awards}
-            collaborators={project.credibility.collaborators}
-            press={project.credibility.press}
-          />
+          <div id="section-credibility" data-section="credibility">
+            <Credibility
+              awards={project.credibility.awards}
+              collaborators={project.credibility.collaborators}
+              press={project.credibility.press}
+            />
+          </div>
         )
       }
 
       if (sectionKey === 'cta' && project.cta) {
         return (
-          <CTA
-            headline={project.cta.headline}
-            text={project.cta.text}
-            contactEmail={project.cta.contact_email}
-            links={project.cta.links}
-          />
+          <div id="section-cta" data-section="cta">
+            <CTA
+              headline={project.cta.headline}
+              text={project.cta.text}
+              contactEmail={project.cta.contact_email}
+              links={project.cta.links}
+            />
+          </div>
         )
       }
 

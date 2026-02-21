@@ -21,10 +21,11 @@ const { headline = 'Why Now', text, points = [] } = Astro.props
     </p>
 
     {points.length > 0 && (
-      <ul class="space-y-4 opacity-0" data-themes-el>
+      <ul class="space-y-5 opacity-0" data-themes-el>
         {points.map(point => (
-          <li class="font-body text-base md:text-lg font-light text-pitch-white/70 pl-6 border-l border-pitch-dim">
-            {point}
+          <li class="font-body text-base md:text-lg font-light text-pitch-white/70 flex items-start gap-4">
+            <span class="inline-block w-[6px] h-[6px] rounded-full bg-pitch-white/30 mt-[10px] flex-shrink-0"></span>
+            <span>{point}</span>
           </li>
         ))}
       </ul>

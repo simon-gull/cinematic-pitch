@@ -1,0 +1,119 @@
+slug: influencer
+title: "Influencer"
+subtitle: "A twisted drama about the dream of being seen — and the nightmare that follows"
+format: "Feature Film · ~105 min"
+genre: "Drama / Thriller / Satire"
+status: "Seeking Co-producers & Financing"
+year: 2026
+
+entry:
+  pulse: true
+
+audio:
+  file: ""
+  autoplay: false
+  loop: true
+
+hook:
+  type: image
+  media: "/projects/influencer/stills/hero.jpg"
+  tagline: "What does it really cost to be seen?"
+  overlay_lines:
+    - "800,000 followers."
+    - "One viral scandal."
+    - "Everything disappears."
+
+story_immersion:
+  beats:
+    - text: "Sally has everything. The body. The brand deals. The followers who like every update. A world of sponsored dinners, staycations, and content that never stops."
+      position: left
+      image: "/projects/influencer/stills/01.jpg"
+      image_behavior: fade-in
+
+    - text: "But she hasn't reached the number. One million. The goal that will make it all real."
+      position: center
+
+    - text: "When a wellness retreat goes wrong and the footage goes viral, the kingdom collapses. Followers, partnerships, boyfriend. Gone in 48 hours."
+      position: right
+      image: "/projects/influencer/stills/02.jpg"
+      image_behavior: fade-out
+
+    - text: "She flees Stockholm for a cottage in the countryside. No screen. No audience. Just silence. And it's unbearable."
+      position: left
+      image: "/projects/influencer/stills/03.jpg"
+      image_behavior: parallax
+
+    - text: "Then one night, a wounded stranger breaks in. Omar. Wanted for armed robbery. She should call the police. Instead, she sees an opportunity: content."
+      position: center
+
+  logline: "A satirical thriller that mirrors our time. In a world where everyone measures their worth in likes, Sally becomes a symbol for our collective addiction to being seen."
+
+mood:
+  description: "The Substance meets Tár. Obsessive, satirical, anthropological. Composed frames. Rhythmic editing. A cinematic journey through a shallow world."
+  palette: dark
+  stills:
+    - "/projects/influencer/stills/04.jpg"
+    - "/projects/influencer/stills/05.jpg"
+    - "/projects/influencer/stills/06.jpg"
+
+world:
+  text: "Set in Stockholm's influencer elite, Österlen's quiet countryside, and the digital arena where followers are currency and attention is oxygen."
+  visual: "/projects/influencer/stills/07.jpg"
+
+characters:
+  - name: "Sally, 27"
+    description: "The ultimate influencer. Grew up with nothing in the suburbs, built an empire of followers. Under the polished surface: a girl who was never enough."
+    image: "/projects/influencer/stills/08.jpg"
+  - name: "Omar, 30"
+    description: "Warm, philosophical, wanted. He dreams of opening a restaurant and leaving crime behind. His presence forces Sally to see beyond the screen."
+    image: "/projects/influencer/stills/09.jpg"
+  - name: "Harriet, 28"
+    description: "Best friend and worst rival. 1.4 million followers. Rich parents. Model body. The spotlight is her oxygen, and she'll do anything to keep it."
+    image: "/projects/influencer/stills/10.jpg"
+
+vision:
+  portrait: "/projects/influencer/portraits/director.jpg"
+  name: "Simon Gullström"
+  text: "Early in my career, I made content for influencers and their agencies. I was fascinated by the world from an anthropological perspective. The psychology behind the facade, the subtle dynamics, their growing role in society. I want to translate that fascination into a cinematic experience that dives deep into the influencer culture of the past decade. The tone is crucial. Subtle, elevated, and at times absurd — but the visual language stays calm, intellectual, and artistic. More Tár than parody."
+  credentials:
+    - "Swedish Grammy Nomination · Best Music Film"
+    - "SVT Premiere · National Broadcast"
+    - "Evolution Mallorca IFF · Official Selection"
+    - "Directors' Library · Selected Director"
+
+themes:
+  headline: "Why Now"
+  text: "Influencers are no longer an internet phenomenon. It's a global industry worth over $35 billion. Children dream of becoming influencers instead of athletes. Yet no Swedish film has truly examined our new superstars."
+  points:
+    - "The cost of performative identity"
+    - "Our collective addiction to being seen"
+    - "What happens when the curated life collapses"
+    - "The gap between influencer luxury and follower reality"
+
+credibility:
+  awards:
+    - "Swedish Grammy Nomination · Best Music Film"
+    - "Evolution Mallorca IFF · Official Selection"
+    - "SVT Premiere · National Broadcast"
+    - "Directors' Library · Selected Director"
+
+cta:
+  headline: "Let's make this together."
+  text: "Seeking co-producers, financiers, and partners who want to tell the story of our time."
+  contact_email: "simon@digdeeperfilms.com"
+  links:
+    - label: "Director's Reel"
+      url: "https://vimeo.com/1163933702"
+    - label: "Dig Deeper Films"
+      url: "https://digdeeperfilms.com"
+
+sections:
+  - hook
+  - story_immersion
+  - mood
+  - world
+  - characters
+  - vision
+  - themes
+  - credibility
+  - cta
