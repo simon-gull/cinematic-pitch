@@ -113,7 +113,7 @@ body.scroll-locked {
 /* Section transitions */
 .section-block {
   opacity: 0;
-  transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: opacity 1s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .section-block.visible {
@@ -122,18 +122,31 @@ body.scroll-locked {
 
 /* Entry gate pulse */
 @keyframes pulse-opacity {
-  0%, 100% { opacity: 0.4; }
+  0%, 100% { opacity: 0.35; }
   50% { opacity: 1; }
 }
 
 .pulse-title {
-  animation: pulse-opacity 3s ease-in-out infinite;
+  animation: pulse-opacity 4s ease-in-out infinite;
+}
+
+/* Cinematic breathe — subtle scale pulse for ambient elements */
+@keyframes cinematic-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.008); }
+}
+
+/* Slow drift — for background images */
+@keyframes slow-drift {
+  0% { transform: scale(1.03) translate(0, 0); }
+  50% { transform: scale(1.05) translate(-0.3%, -0.2%); }
+  100% { transform: scale(1.03) translate(0, 0); }
 }
 
 /* Image reveal */
 .img-reveal {
   clip-path: inset(0 0 100% 0);
-  transition: clip-path 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: clip-path 1.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .img-reveal.revealed {
@@ -143,13 +156,19 @@ body.scroll-locked {
 /* Text fade in */
 .text-fade {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(16px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 .text-fade.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Section divider — cinematic fade between sections */
+.section-fade-divider {
+  height: 8vh;
+  background: linear-gradient(to bottom, transparent, #0A0A0A);
 }
 
 /* Section nav */

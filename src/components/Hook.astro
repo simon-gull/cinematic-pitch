@@ -31,7 +31,7 @@ const { type = 'image', media = '', tagline = '', overlayLines = [] } = Astro.pr
           src={media}
           alt=""
           class="w-full h-full object-cover"
-          style="transform: scale(1.05); transition: transform 12s ease-out;"
+          style="transform: scale(1.05); animation: slow-drift 25s ease-in-out infinite;"
           data-ken-burns
         />
       </div>
@@ -55,10 +55,11 @@ const { type = 'image', media = '', tagline = '', overlayLines = [] } = Astro.pr
     <!-- Overlay lines (scroll-triggered) -->
     {overlayLines.length > 0 && (
       <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-        <div class="text-center px-8">
+        <div class="text-center px-8" style="background: radial-gradient(ellipse at center, rgba(10,10,10,0.6) 0%, transparent 70%);">
           {overlayLines.map((line, i) => (
             <p
-              class="hook-overlay-line font-display text-xl md:text-3xl lg:text-4xl font-light opacity-0 mb-4"
+              class="hook-overlay-line font-display text-lg md:text-2xl lg:text-3xl font-light tracking-wide opacity-0 mb-3"
+              style="text-shadow: 0 2px 20px rgba(0,0,0,0.5);"
               data-overlay-index={i}
               data-overlay-total={overlayLines.length}
             >

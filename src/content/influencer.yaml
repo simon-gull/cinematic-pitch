@@ -1,9 +1,9 @@
 slug: influencer
 title: "Influencer"
-subtitle: "A twisted drama about the dream of being seen — and the nightmare that follows"
-format: "Feature Film · ~105 min"
-genre: "Drama / Thriller / Satire"
-status: "Seeking Co-producers & Financing"
+subtitle: "Ett skruvat drama om drömmen att bli sedd – och mardrömmen som följer med"
+format: "Långfilm · ca 105 min"
+genre: "Drama / Thriller / Satir"
+status: "Vi söker samproducenter & finansiärer"
 year: 2026
 
 entry:
@@ -17,39 +17,39 @@ audio:
 hook:
   type: image
   media: "/projects/influencer/stills/hero.jpg"
-  tagline: "What does it really cost to be seen?"
+  tagline: "Vad kostar det egentligen att bli sedd?"
   overlay_lines:
-    - "800,000 followers."
-    - "One viral scandal."
-    - "Everything disappears."
+    - "800 000 följare."
+    - "En viral skandal."
+    - "Allt försvinner."
 
 story_immersion:
   beats:
-    - text: "Sally has everything. The body. The brand deals. The followers who like every update. A world of sponsored dinners, staycations, and content that never stops."
+    - text: "Sally har allt. Modellkropp, trendiga vänner och 800 000 följare som likar varje uppdatering. En värld av fartfyllda middagar, staycations och lukrativa brandsamarbeten."
       position: left
       image: "/projects/influencer/stills/01.jpg"
       image_behavior: fade-in
 
-    - text: "But she hasn't reached the number. One million. The goal that will make it all real."
+    - text: "Men hon har inte nått siffran. En miljon. Målet som ska göra allt verkligt."
       position: center
 
-    - text: "When a wellness retreat goes wrong and the footage goes viral, the kingdom collapses. Followers, partnerships, boyfriend. Gone in 48 hours."
+    - text: "När ett wellness retreat spårar ur och blir viralt rasar allt. Följare, samarbeten, pojkvän. Borta på 48 timmar."
       position: right
       image: "/projects/influencer/stills/02.jpg"
       image_behavior: fade-out
 
-    - text: "She flees Stockholm for a cottage in the countryside. No screen. No audience. Just silence. And it's unbearable."
+    - text: "Hon flyr Stockholm för en stuga i Österlen. Ingen skärm. Ingen publik. Bara tystnad. Och det är outhärdligt."
       position: left
       image: "/projects/influencer/stills/03.jpg"
       image_behavior: parallax
 
-    - text: "Then one night, a wounded stranger breaks in. Omar. Wanted for armed robbery. She should call the police. Instead, she sees an opportunity: content."
+    - text: "En kväll hittar hon en skadad man i stugan. Omar. Efterlyst för väpnat rån. Hon borde ringa polisen. Istället ser hon en möjlighet: content."
       position: center
 
-  logline: "A satirical thriller that mirrors our time. In a world where everyone measures their worth in likes, Sally becomes a symbol for our collective addiction to being seen."
+  logline: "En satirisk thriller som speglar vår samtid. I en värld där alla mäter sitt värde i likes blir Sally en symbol för vårt gemensamma beroende att bli sedda."
 
 mood:
-  description: "The Substance meets Tár. Obsessive, satirical, anthropological. Composed frames. Rhythmic editing. A cinematic journey through a shallow world."
+  description: "The Substance möter Tár. Obsessivt, satiriskt, antropologiskt. Komponerade bilder. Rytmisk klippning. En filmisk resa genom en ytlig värld."
   palette: dark
   stills:
     - "/projects/influencer/stills/04.jpg"
@@ -57,52 +57,52 @@ mood:
     - "/projects/influencer/stills/06.jpg"
 
 world:
-  text: "Set in Stockholm's influencer elite, Österlen's quiet countryside, and the digital arena where followers are currency and attention is oxygen."
+  text: "Stockholms influencer-elit, Österlens tysta landsbygd, och den digitala arenan där följare är valuta och uppmärksamhet är syre."
   visual: "/projects/influencer/stills/07.jpg"
 
 characters:
   - name: "Sally, 27"
-    description: "The ultimate influencer. Grew up with nothing in the suburbs, built an empire of followers. Under the polished surface: a girl who was never enough."
+    description: "Den ultimata influencern. Uppväxt med ingenting i Upplands Väsby, byggde ett imperium av följare. Under den polerade ytan: en tjej som aldrig var tillräcklig."
     image: "/projects/influencer/stills/08.jpg"
   - name: "Omar, 30"
-    description: "Warm, philosophical, wanted. He dreams of opening a restaurant and leaving crime behind. His presence forces Sally to see beyond the screen."
+    description: "Varm, filosofisk, efterlyst. Han drömmer om att öppna en restaurang och lämna kriminaliteten bakom sig. Hans närvaro tvingar Sally att se bortom skärmen."
     image: "/projects/influencer/stills/09.jpg"
   - name: "Harriet, 28"
-    description: "Best friend and worst rival. 1.4 million followers. Rich parents. Model body. The spotlight is her oxygen, and she'll do anything to keep it."
+    description: "Bästa vän och värsta rival. 1,4 miljoner följare. Stenrika föräldrar. Modellkropp. Rampljuset är hennes syre, och hon gör allt för att behålla det."
     image: "/projects/influencer/stills/10.jpg"
 
 vision:
   portrait: "/projects/influencer/portraits/director.jpg"
   name: "Simon Gullström"
-  text: "Early in my career, I made content for influencers and their agencies. I was fascinated by the world from an anthropological perspective. The psychology behind the facade, the subtle dynamics, their growing role in society. I want to translate that fascination into a cinematic experience that dives deep into the influencer culture of the past decade. The tone is crucial. Subtle, elevated, and at times absurd — but the visual language stays calm, intellectual, and artistic. More Tár than parody."
+  text: "I början av min karriär gjorde jag content för influencers och deras byråer, och jag fascinerades av omgivningen från ett antropologiskt perspektiv. Psykologin bakom fasaden, de subtila nyanserna, deras växande roll i samhället. Jag vill översätta den fascinationen till en filmisk upplevelse som djupdyker i influencerkulturen. Anslaget är allt. Subtilt, upphöjt, stundvis bisarrt – men bildspråket är lugnt, intellektuellt, konstnärligt. Mer Tár än parodi."
   credentials:
-    - "Swedish Grammy Nomination · Best Music Film"
-    - "SVT Premiere · National Broadcast"
-    - "Evolution Mallorca IFF · Official Selection"
-    - "Directors' Library · Selected Director"
+    - "Grammisnominering · Bästa musikvideo"
+    - "SVT-premiär · Rikssändning"
+    - "Evolution Mallorca IFF · Officiellt urval"
+    - "Directors' Library · Utvald regissör"
 
 themes:
-  headline: "Why Now"
-  text: "Influencers are no longer an internet phenomenon. It's a global industry worth over $35 billion. Children dream of becoming influencers instead of athletes. Yet no Swedish film has truly examined our new superstars."
+  headline: "Varför nu"
+  text: "Influencers är inte längre ett internetfenomen – det är en global industri värd över 350 miljarder kronor. Barn drömmer om att bli influensers istället för idrottare. Ändå har ingen svensk film verkligen granskat våra nya superstjärnor."
   points:
-    - "The cost of performative identity"
-    - "Our collective addiction to being seen"
-    - "What happens when the curated life collapses"
-    - "The gap between influencer luxury and follower reality"
+    - "Priset av en performativ identitet"
+    - "Vårt kollektiva beroende av att bli sedda"
+    - "Vad händer när det kurerade livet kollapsar"
+    - "Klyftan mellan influenserlyxen och följarnas vardag"
 
 credibility:
   awards:
-    - "Swedish Grammy Nomination · Best Music Film"
-    - "Evolution Mallorca IFF · Official Selection"
-    - "SVT Premiere · National Broadcast"
-    - "Directors' Library · Selected Director"
+    - "Grammisnominering · Bästa musikvideo"
+    - "Evolution Mallorca IFF · Officiellt urval"
+    - "SVT-premiär · Rikssändning"
+    - "Directors' Library · Utvald regissör"
 
 cta:
-  headline: "Let's make this together."
-  text: "Seeking co-producers, financiers, and partners who want to tell the story of our time."
+  headline: "Vill du vara med på resan?"
+  text: "Vi söker samproducenter, finansiärer och partners som vill berätta vår tids historia."
   contact_email: "simon@digdeeperfilms.com"
   links:
-    - label: "Director's Reel"
+    - label: "Regissörens showreel"
       url: "https://vimeo.com/1163933702"
     - label: "Dig Deeper Films"
       url: "https://digdeeperfilms.com"

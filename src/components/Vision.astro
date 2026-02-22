@@ -10,10 +10,10 @@ const { portrait = '', name, text, credentials = [] } = Astro.props
 ---
 
 <section class="vision-section" style="background: #0A0A0A;">
-  <div class="h-[15vh]"></div>
+  <div class="h-[10vh]"></div>
 
   <div class="max-w-5xl mx-auto px-6 md:px-16">
-    <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-16 items-start">
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 md:gap-14 items-start">
       {/* Portrait */}
       {portrait && (
         <div class="vision-portrait opacity-0" data-vision-portrait>
@@ -28,7 +28,7 @@ const { portrait = '', name, text, credentials = [] } = Astro.props
 
       {/* Statement */}
       <div class="vision-statement opacity-0" data-vision-text>
-        <p class="font-display text-2xl md:text-3xl lg:text-[36px] font-light leading-relaxed text-pitch-white italic">
+        <p class="font-display text-lg md:text-xl lg:text-2xl font-light leading-relaxed text-pitch-white italic">
           {text}
         </p>
 
@@ -47,7 +47,7 @@ const { portrait = '', name, text, credentials = [] } = Astro.props
     </div>
   </div>
 
-  <div class="h-[15vh]"></div>
+  <div class="h-[10vh]"></div>
 </section>
 
 <script>

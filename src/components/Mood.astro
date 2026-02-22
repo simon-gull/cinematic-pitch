@@ -57,19 +57,20 @@ const { description = '', stills = [] } = Astro.props
       }
     )
 
-    // Parallax drift on scroll
+    // Parallax drift on scroll — layered depth
     const img = el.querySelector('img')
     if (img) {
+      const depth = i === 0 ? 60 : 40 + (i * 15)
       gsap.fromTo(img,
-        { y: 30 },
+        { y: depth },
         {
-          y: -50,
+          y: -depth,
           ease: 'none',
           scrollTrigger: {
             trigger: el,
             start: 'top bottom',
             end: 'bottom top',
-            scrub: true,
+            scrub: 0.8,
           }
         }
       )
