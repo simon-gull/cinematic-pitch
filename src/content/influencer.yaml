@@ -30,26 +30,44 @@ story_immersion:
     - text: "Allt försvinner."
       position: center
 
-    - text: "Sally har allt. Modellkropp, trendiga vänner och 800 000 följare som likar varje uppdatering. En värld av fartfyllda middagar, staycations och lukrativa brandsamarbeten."
+    - text: "Sally, 27, har byggt sitt imperium på Instagram. Perfekt kropp. Perfekt flöde. En vardag av fester, staycations och brandsamarbeten. Det enda som fattas: en miljon följare."
       position: left
       image: "/projects/influencer/stills/01.jpg"
       image_behavior: fade-in
 
-    - text: "Men hon har inte nått siffran. En miljon. Målet som ska göra allt verkligt."
-      position: center
-
-    - text: "När ett wellness retreat spårar ur och blir viralt rasar allt. Följare, samarbeten, pojkvän. Borta på 48 timmar."
+    - text: "Under ett wellness retreat med sin bästa vän och värsta rival Harriet svimmar en städerska. Sally filmar sig själv när hon 'hjälper'. Klippet exploderar. Men inte som hon hoppats."
       position: right
       image: "/projects/influencer/stills/02.jpg"
-      image_behavior: fade-out
+      image_behavior: fade-in
 
-    - text: "Hon flyr Stockholm för en stuga i Österlen. Ingen skärm. Ingen publik. Bara tystnad. Och det är outhärdligt."
+    - text: "Kommentarerna haglar: oempatisk, rasist. Varumärkena drar sig ur. Följarna rasar från 800 000 till 600 000. Pojkvännen behöver en paus. Någon kastar en milkshake mot hennes fönster."
+      position: center
+
+    - text: "Hon flyr Stockholm för en stuga i Österlen. Stänger av mobilen. Gömmer den på högsta hyllan i köket. Till en början njuter hon av tystnaden. Sen blir den outhärdlig."
       position: left
       image: "/projects/influencer/stills/03.jpg"
       image_behavior: parallax
 
-    - text: "En kväll hittar hon en skadad man i stugan. Omar. Efterlyst för väpnat rån. Hon borde ringa polisen. Istället ser hon en möjlighet: content."
+    - text: "En kväll hittar hon en skadad man i stugan. Omar, 29. Just begått ett väpnat värdetransportrån. Blodiga kläder. En väska full med sedlar och en pistol. Sally borde ringa polisen."
+      position: right
+      image: "/projects/influencer/stills/11.jpg"
+      image_behavior: fade-in
+
+    - text: "Istället ser hon en möjlighet: content."
       position: center
+
+    - text: "Två helt olika livsöden krockar. Han riskerar livet för 400 000 kronor. Hon får lika mycket för ett inlägg. Men i köket, över middag och kvällssol, uppstår något äkta."
+      position: left
+      image: "/projects/influencer/stills/04.jpg"
+      image_behavior: fade-in
+
+    - text: "Sally smygfotograferar Omar. Managern Tom smsar oavbrutet: 'Mer bilder! Folk älskar det här.' Följarsiffrorna skjuter i höjden. Sally slits mellan Omars lugna röst och beroendet av att bli sedd."
+      position: center
+
+    - text: "Men Omar upptäcker att hans ansikte spridits till hundratusentals följare. Allvaret slår in. Allt rasar. Igen."
+      position: right
+      image: "/projects/influencer/stills/07.jpg"
+      image_behavior: fade-in
 
   logline: "En satirisk thriller som speglar vår samtid. I en värld där alla mäter sitt värde i likes blir Sally en symbol för vårt gemensamma beroende att bli sedda."
 
@@ -57,24 +75,24 @@ mood:
   description: "The Substance möter Tár. Obsessivt, satiriskt, antropologiskt. Komponerade bilder. Rytmisk klippning. En filmisk resa genom en ytlig värld."
   palette: dark
   stills:
-    - "/projects/influencer/stills/04.jpg"
     - "/projects/influencer/stills/05.jpg"
     - "/projects/influencer/stills/06.jpg"
+    - "/projects/influencer/stills/12.jpg"
 
 world:
   text: "Stockholms influencer-elit, Österlens tysta landsbygd, och den digitala arenan där följare är valuta och uppmärksamhet är syre."
-  visual: "/projects/influencer/stills/07.jpg"
+  visual: "/projects/influencer/stills/10.jpg"
 
 characters:
   - name: "Sally, 27"
     description: "Den ultimata influencern. Uppväxt med ingenting i Upplands Väsby, byggde ett imperium av följare. Under den polerade ytan: en tjej som aldrig var tillräcklig."
     image: "/projects/influencer/stills/08.jpg"
-  - name: "Omar, 30"
+  - name: "Omar, 29"
     description: "Varm, filosofisk, efterlyst. Han drömmer om att öppna en restaurang och lämna kriminaliteten bakom sig. Hans närvaro tvingar Sally att se bortom skärmen."
     image: "/projects/influencer/stills/09.jpg"
   - name: "Harriet, 28"
-    description: "Bästa vän och värsta rival. 1,4 miljoner följare. Stenrika föräldrar. Modellkropp. Rampljuset är hennes syre, och hon gör allt för att behålla det."
-    image: "/projects/influencer/stills/10.jpg"
+    description: "Bästa vän och värsta rival. 1,4 miljoner följare. Stenrika föräldrar. Rampljuset är hennes syre, och hon gör allt för att behålla det."
+    image: "/projects/influencer/stills/01.jpg"
 
 vision:
   portrait: "/projects/influencer/portraits/director.jpg"

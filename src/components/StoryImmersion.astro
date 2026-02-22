@@ -15,12 +15,11 @@ const { beats = [], logline = '' } = Astro.props
 ---
 
 <section class="story-immersion" style="background: #0A0A0A;">
-  <!-- Spacing before -->
-  <div class="h-[12vh]"></div>
+  <div class="h-[6vh]"></div>
 
   {beats.map((beat, i) => (
     <div
-      class="beat-block relative min-h-[55vh] flex items-center px-6 md:px-16 lg:px-24"
+      class="beat-block relative min-h-[35vh] flex items-center px-6 md:px-16 lg:px-24 py-8 md:py-12"
       data-beat-index={i}
     >
       {beat.position === 'left' && (
@@ -67,15 +66,14 @@ const { beats = [], logline = '' } = Astro.props
 
   {/* Logline — the snap */}
   {logline && (
-    <div class="logline-block min-h-screen flex items-center justify-center px-6 md:px-16">
+    <div class="logline-block min-h-[60vh] flex items-center justify-center px-6 md:px-16">
       <p class="logline-text font-display text-lg md:text-2xl lg:text-3xl font-light leading-relaxed text-center max-w-3xl text-pitch-white opacity-0" data-logline>
         {logline}
       </p>
     </div>
   )}
 
-  <!-- Spacing after -->
-  <div class="h-[10vh]"></div>
+  <div class="h-[6vh]"></div>
 </section>
 
 <script>
@@ -83,117 +81,81 @@ const { beats = [], logline = '' } = Astro.props
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
   gsap.registerPlugin(ScrollTrigger)
 
-  // Animate each beat — luxurious text emergence
+  // Text — scrub-based for smooth bidirectional control
   document.querySelectorAll('[data-beat-text]').forEach(el => {
+    const block = el.closest('.beat-block')
+    if (!block) return
+
     gsap.fromTo(el,
-      { opacity: 0, y: 30, filter: 'blur(4px)' },
+      { opacity: 0, y: 25, filter: 'blur(3px)' },
       {
         opacity: 1, y: 0, filter: 'blur(0px)',
-        duration: 1.6,
-        ease: 'power3.out',
+        ease: 'power2.out',
         scrollTrigger: {
-          trigger: el.closest('.beat-block'),
-          start: 'top 70%',
-          toggleActions: 'play none none none',
+          trigger: block,
+          start: 'top 80%',
+          end: 'top 40%',
+          scrub: 0.4,
         }
       }
     )
   })
 
+  // Images — smooth scrub-based fade with parallax
   document.querySelectorAll('[data-beat-image]').forEach(el => {
     const behavior = el.getAttribute('data-behavior') || 'fade-in'
     const block = el.closest('.beat-block')
     if (!block) return
-
     const img = el.querySelector('img')
 
-    if (behavior === 'fade-in' || behavior === 'hold') {
-      gsap.fromTo(el,
-        { opacity: 0, scale: 1.03 },
-        {
-          opacity: 1, scale: 1,
-          duration: 1.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: block,
-            start: 'top 65%',
-            toggleActions: 'play none none none',
-          }
-        }
-      )
-      // Subtle parallax on all images — smooth scrub
-      if (img) {
-        gsap.fromTo(img,
-          { y: 30 },
-          {
-            y: -30,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: block,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 0.6,
-            }
-          }
-        )
-      }
-    }
-
-    if (behavior === 'fade-out') {
-      gsap.fromTo(el,
-        { opacity: 0, scale: 1.03 },
-        {
-          opacity: 1, scale: 1,
-          duration: 1.4,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: block,
-            start: 'top 65%',
-            toggleActions: 'play none none none',
-          }
-        }
-      )
-      gsap.to(el, {
-        opacity: 0,
-        scale: 0.98,
+    // Fade in via scrub — always reversible
+    gsap.fromTo(el,
+      { opacity: 0, scale: 1.03 },
+      {
+        opacity: 1, scale: 1,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: block,
-          start: 'bottom 60%',
-          end: 'bottom 20%',
-          scrub: true,
+          start: 'top 75%',
+          end: 'top 35%',
+          scrub: 0.5,
         }
-      })
-    }
+      }
+    )
 
-    if (behavior === 'parallax') {
-      gsap.fromTo(el,
-        { opacity: 0, y: 60 },
+    // Subtle parallax on all images
+    if (img) {
+      gsap.fromTo(img,
+        { y: 25 },
         {
-          opacity: 1, y: -40,
+          y: -25,
           ease: 'none',
           scrollTrigger: {
             trigger: block,
             start: 'top bottom',
             end: 'bottom top',
-            scrub: true,
+            scrub: 0.6,
           }
         }
       )
     }
   })
 
-  // Logline — gentle emergence from silence
+  // Logline — scrub-based emergence
   document.querySelectorAll('[data-logline]').forEach(el => {
+    const block = el.closest('.logline-block')
+    if (!block) return
+
     gsap.fromTo(el,
-      { opacity: 0, y: 20, letterSpacing: '0.02em' },
+      { opacity: 0, y: 15, letterSpacing: '0.02em' },
       {
         opacity: 1, y: 0, letterSpacing: '0em',
-        duration: 2,
-        ease: 'power3.out',
+        ease: 'power2.out',
         scrollTrigger: {
-          trigger: el.closest('.logline-block'),
-          start: 'top 60%',
-          toggleActions: 'play none none none',
+          trigger: block,
+          start: 'top 70%',
+          end: 'top 35%',
+          scrub: 0.5,
         }
       }
     )

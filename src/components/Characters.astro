@@ -13,7 +13,7 @@ const { characters = [] } = Astro.props
 ---
 
 <section class="characters-section" style="background: #0A0A0A;">
-  <div class="h-[15vh]"></div>
+  <div class="h-[6vh]"></div>
 
   <div class="max-w-7xl mx-auto px-6 md:px-16">
     <div class={`grid grid-cols-1 ${characters.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols-3'} gap-8 md:gap-12`}>
@@ -39,7 +39,7 @@ const { characters = [] } = Astro.props
     </div>
   </div>
 
-  <div class="h-[15vh]"></div>
+  <div class="h-[6vh]"></div>
 </section>
 
 <script>
@@ -47,20 +47,17 @@ const { characters = [] } = Astro.props
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
   gsap.registerPlugin(ScrollTrigger)
 
-  document.querySelectorAll('[data-char-card]').forEach(el => {
-    const delay = parseFloat(el.getAttribute('data-char-delay') || '0')
-
+  document.querySelectorAll('[data-char-card]').forEach((el, i) => {
     gsap.fromTo(el,
-      { opacity: 0, y: 50 },
+      { opacity: 0, y: 30 },
       {
         opacity: 1, y: 0,
-        duration: 1,
-        delay,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: el.closest('.characters-section'),
-          start: 'top 65%',
-          toggleActions: 'play none none none',
+          start: `${60 + i * 5}% bottom`,
+          end: `${75 + i * 5}% bottom`,
+          scrub: 0.4,
         }
       }
     )

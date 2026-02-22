@@ -9,7 +9,7 @@ interface Props {
 const { type = 'image', media = '', tagline = '', overlayLines = [] } = Astro.props
 ---
 
-<section class="hook-section relative" style="min-height: 200vh;">
+<section class="hook-section relative" style="min-height: 150vh;">
   <!-- Sticky viewport container -->
   <div class="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center" style="background: #0A0A0A;">
     {type === 'video' && media && (

@@ -8,7 +8,7 @@ const { text, visual = '' } = Astro.props
 ---
 
 <section class="world-section relative" style="background: #0A0A0A;">
-  <div class="h-[15vh]"></div>
+  <div class="h-[6vh]"></div>
 
   {visual && (
     <div class="world-image relative overflow-hidden opacity-0" data-world-image style="height: 70vh;">
@@ -23,7 +23,7 @@ const { text, visual = '' } = Astro.props
     </p>
   </div>
 
-  <div class="h-[10vh]"></div>
+  <div class="h-[6vh]"></div>
 </section>
 
 <script>
@@ -36,12 +36,12 @@ const { text, visual = '' } = Astro.props
       { opacity: 0 },
       {
         opacity: 1,
-        duration: 1.5,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: el,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
+          start: 'top 85%',
+          end: 'top 45%',
+          scrub: 0.5,
         }
       }
     )
@@ -49,15 +49,15 @@ const { text, visual = '' } = Astro.props
 
   document.querySelectorAll('[data-world-text]').forEach(el => {
     gsap.fromTo(el,
-      { opacity: 0, y: 30 },
+      { opacity: 0, y: 20 },
       {
         opacity: 1, y: 0,
-        duration: 1,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: el,
-          start: 'top 75%',
-          toggleActions: 'play none none none',
+          start: 'top 80%',
+          end: 'top 50%',
+          scrub: 0.4,
         }
       }
     )

@@ -8,7 +8,7 @@ const { description = '', stills = [] } = Astro.props
 ---
 
 <section class="mood-section" style="background: #0A0A0A;">
-  <div class="h-[15vh]"></div>
+  <div class="h-[8vh]"></div>
 
   {stills.map((src, i) => (
     <div
@@ -34,7 +34,7 @@ const { description = '', stills = [] } = Astro.props
     </div>
   ))}
 
-  <div class="h-[15vh]"></div>
+  <div class="h-[8vh]"></div>
 </section>
 
 <script>
@@ -42,25 +42,26 @@ const { description = '', stills = [] } = Astro.props
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
   gsap.registerPlugin(ScrollTrigger)
 
+  // Scrub-based reveal — smooth and bidirectional
   document.querySelectorAll('[data-mood-reveal]').forEach((el, i) => {
     gsap.fromTo(el,
-      { opacity: 0, y: i === 0 ? 0 : 40, scale: 1.02 },
+      { opacity: 0, y: i === 0 ? 0 : 30, scale: 1.02 },
       {
         opacity: 1, y: 0, scale: 1,
-        duration: 1.8,
-        ease: 'power3.out',
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: el,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
+          start: 'top 85%',
+          end: 'top 45%',
+          scrub: 0.5,
         }
       }
     )
 
-    // Parallax drift on scroll — layered depth
+    // Parallax drift
     const img = el.querySelector('img')
     if (img) {
-      const depth = i === 0 ? 60 : 40 + (i * 15)
+      const depth = i === 0 ? 50 : 35 + (i * 10)
       gsap.fromTo(img,
         { y: depth },
         {
@@ -77,18 +78,18 @@ const { description = '', stills = [] } = Astro.props
     }
   })
 
+  // Description text — scrub
   document.querySelectorAll('[data-mood-text]').forEach(el => {
     gsap.fromTo(el,
-      { opacity: 0, y: 20 },
+      { opacity: 0, y: 15 },
       {
         opacity: 1, y: 0,
-        duration: 1,
-        delay: 0.5,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: el,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
+          start: 'top 90%',
+          end: 'top 65%',
+          scrub: 0.4,
         }
       }
     )

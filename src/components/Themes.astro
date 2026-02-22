@@ -9,9 +9,9 @@ const { headline = 'Why Now', text, points = [] } = Astro.props
 ---
 
 <section class="themes-section relative" style="background: #0f0f0f;">
-  <div class="h-[15vh]"></div>
+  <div class="h-[6vh]"></div>
 
-  <div class="max-w-3xl mx-auto px-6 md:px-16 py-16 md:py-24">
+  <div class="max-w-3xl mx-auto px-6 md:px-16 py-10 md:py-16">
     <h2 class="themes-headline font-display text-lg md:text-xl tracking-[0.2em] uppercase text-pitch-muted mb-12 opacity-0" data-themes-el>
       {headline}
     </h2>
@@ -32,7 +32,7 @@ const { headline = 'Why Now', text, points = [] } = Astro.props
     )}
   </div>
 
-  <div class="h-[10vh]"></div>
+  <div class="h-[6vh]"></div>
 </section>
 
 <script>
@@ -42,16 +42,15 @@ const { headline = 'Why Now', text, points = [] } = Astro.props
 
   document.querySelectorAll('[data-themes-el]').forEach((el, i) => {
     gsap.fromTo(el,
-      { opacity: 0, y: 30 },
+      { opacity: 0, y: 20 },
       {
         opacity: 1, y: 0,
-        duration: 1,
-        delay: i * 0.2,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: el.closest('.themes-section'),
-          start: 'top 65%',
-          toggleActions: 'play none none none',
+          start: `${65 + i * 5}% bottom`,
+          end: `${75 + i * 5}% bottom`,
+          scrub: 0.4,
         }
       }
     )
