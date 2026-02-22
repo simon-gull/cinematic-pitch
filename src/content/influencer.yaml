@@ -18,13 +18,18 @@ hook:
   type: image
   media: "/projects/influencer/stills/hero.jpg"
   tagline: "Vad kostar det egentligen att bli sedd?"
-  overlay_lines:
-    - "800 000 följare."
-    - "En viral skandal."
-    - "Allt försvinner."
 
 story_immersion:
   beats:
+    - text: "800 000 följare."
+      position: center
+
+    - text: "En viral skandal."
+      position: center
+
+    - text: "Allt försvinner."
+      position: center
+
     - text: "Sally har allt. Modellkropp, trendiga vänner och 800 000 följare som likar varje uppdatering. En värld av fartfyllda middagar, staycations och lukrativa brandsamarbeten."
       position: left
       image: "/projects/influencer/stills/01.jpg"
